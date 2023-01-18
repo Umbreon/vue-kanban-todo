@@ -23,8 +23,15 @@
         @start="drag = true"
         @end="drag = false"
       >
-        <div v-for="task in sectionStore.getSection(sectionId).tasks" :key="task.id">
-          <Task :sectionId="sectionId" :taskId="task.id" />
+        <div
+          v-for="task in sectionStore.getSection(sectionId).tasks"
+          :key="task.id"
+        >
+          <Task
+            :sectionId="sectionId"
+            :taskId="task.id"
+            @deleteTask="deleteTask"
+          />
         </div>
       </draggable>
     </a-row>
@@ -73,6 +80,9 @@ export default {
       const inputText = e.target.innerText;
       this.sectionStore.setSectionTitle(sectionId, inputText);
     },
+    deleteTask(taskId) {
+      this.sectionStore.deleteTask(this.sectionId, taskId);
+    },
   },
 };
 </script>
@@ -88,6 +98,12 @@ export default {
       letter-spacing: -0.0075em;
       color: #667085;
     }
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 }
 </style>

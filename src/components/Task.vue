@@ -3,7 +3,7 @@
     <a-icon
       slot="extra"
       type="delete"
-      @click="deleteTask(sectionId, taskId)"
+      @click="deleteTask(taskId)"
     />
     <a-row class="task-created" type="flex" :gutter="[8, 0]">
       <a-col class="task-created-date">
@@ -88,8 +88,8 @@ export default {
     ...mapWritableState(useSectionStore, ["section"]),
   },
   methods: {
-    deleteTask(sectionId, taskId) {
-      this.sectionStore.deleteTask(sectionId, taskId);
+    deleteTask(taskId) {
+      this.$emit('deleteTask', taskId);
     },
   },
 };
