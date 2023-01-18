@@ -1,13 +1,14 @@
 import { defineStore} from 'pinia';
+import { useSectionStore } from './section';
 
 export const useTaskStore = defineStore('task', {
-    state: () => ({ count: 0, name: 'Eduardo' }),
+    state: () => ({
+      tasks: []
+    }),
     getters: {
-      doubleCount: (state) => state.count * 2,
-    },
-    actions: {
-      increment() {
-        this.count++
-      },
+      getTask(state){
+        const sectionStore = useSectionStore();
+        return (sectionId, taskId) => sectionStore.sections.find(s => s.id === sectionId)?.tasks.find(t => t.id === taskId); 
+      }
     },
   })

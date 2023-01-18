@@ -1,5 +1,4 @@
 import { ViewGridIcon, BellIcon, ChartSquareBarIcon ,UserCircleIcon, CogIcon } from '@vue-hero-icons/outline'
-import { notification } from 'ant-design-vue';
 import SideLayout from '../layouts/SideLayout.vue'
 
 const RouteType = {
@@ -16,7 +15,7 @@ const routes = [
             type: RouteType.PROJECT,
             layout: SideLayout,
             icon: ViewGridIcon,
-            notification: true
+            notification: 'task'
         }
     },
     {
@@ -27,7 +26,7 @@ const routes = [
             type: RouteType.PROJECT,
             layout: SideLayout,
             icon: BellIcon,
-            notification: true,
+            notification: 'notification',
         }
     },
     {
@@ -37,7 +36,7 @@ const routes = [
         meta: {
             type: RouteType.PROJECT,
             layout: SideLayout,
-            icon: ChartSquareBarIcon
+            icon: ChartSquareBarIcon,
         }
     },
     {
@@ -48,7 +47,7 @@ const routes = [
             type: RouteType.PROJECT,
             layout: SideLayout,
             icon: UserCircleIcon,
-            notification: true
+            notification: 'team'
         }
     },
     {

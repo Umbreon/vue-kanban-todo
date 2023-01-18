@@ -8,6 +8,7 @@ export const useSectionStore = defineStore('section', {
             title: "TO DO",
             tasks: [
               {
+                id: 1,
                 title: "Make a Kanban App",
                 createDate: new Date("2022-01-12"),
                 createdBy: {
@@ -66,6 +67,7 @@ export const useSectionStore = defineStore('section', {
                 ],
               },
               {
+                id: 2,
                 title: "Fix his kid through any means",
                 createDate: new Date("2022-01-12"),
                 createdBy: {
@@ -99,6 +101,7 @@ export const useSectionStore = defineStore('section', {
                 ],
               },
               {
+                id: 3,
                 title: "Share it with friends",
                 createDate: new Date("2022-01-12"),
                 createdBy: {
@@ -150,6 +153,7 @@ export const useSectionStore = defineStore('section', {
             title: "DOING",
             tasks: [
               {
+                id: 4,
                 title: "Share the links for inspiration",
                 createDate: new Date("2022-01-12"),
                 createdBy: {
@@ -203,6 +207,7 @@ export const useSectionStore = defineStore('section', {
             title: "DONE",
             tasks: [
               {
+                id: 5,
                 title: "Treatment by Fire",
                 createDate: new Date("2022-01-12"),
                 createdBy: {
@@ -254,6 +259,7 @@ export const useSectionStore = defineStore('section', {
                 ],
               },
               {
+                id: 6,
                 title: "Use Elephants and Snakes",
                 createDate: new Date("2022-01-12"),
                 createdBy: {
@@ -263,6 +269,7 @@ export const useSectionStore = defineStore('section', {
                 assignedTo: [],
                 tags: [],
                 attachments: [],
+                comments: [],
               },
             ],
           },
@@ -270,5 +277,25 @@ export const useSectionStore = defineStore('section', {
     }),
     getters: {
       getSections: (state) => state.sections,
+      getSection(state){
+        return (sectionId) => state.sections.find(s => s.id === sectionId); 
+      }
+    },
+    actions: {
+      addSection(section){
+        this.sections.unshift(section);
+      },
+      setSectionTitle(sectionId, title){
+        this.section.find(s => s.id === sectionId).title = title;
+      },
+      addTask(sectionId,task) {
+        this.sections.find(s => s.id === sectionId).tasks.unshift(task);
+      },
+      deleteTask(sectionId, taskId){
+        this.sections.find(s => s.id === sectionId).tasks = this.sections.find(s => s.id === sectionId).tasks.filter(t => t.id !== taskId);
+      },
+      clearSections(){
+        this.sections = this.sections.filter(s => s.tasks.length > 0);
+      }
     },
   })

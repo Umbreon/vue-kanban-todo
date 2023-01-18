@@ -8,16 +8,23 @@
         {{ item.name }}
       </a-col>
       <a-col v-if="item.meta.notification" flex="4">
-        <a-button type="primary"> 7 </a-button>
+        <a-button type="primary">
+          {{ notificationStore.notification[item.meta.notification] }}
+        </a-button>
       </a-col>
     </a-row>
   </router-link>
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { useNotificationStore } from "@/stores/notifications";
+
 export default {
   name: "RouterItem",
-  components: {},
+  computed: {
+    ...mapStores(useNotificationStore),
+  },
   props: {
     item: {
       type: Object,

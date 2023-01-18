@@ -1,7 +1,11 @@
 import Vue from 'vue'
+
+import { createPinia, PiniaVuePlugin} from 'pinia'
+Vue.use(PiniaVuePlugin)
+const pinia = createPinia()
+
 import router from '@/router'
 import filters from '@/filters'
-import { createPinia, PiniaVuePlugin} from 'pinia'
 import App from './App.vue'
 import Antd from 'ant-design-vue'
 
@@ -15,8 +19,6 @@ Vue.config.productionTip = false
 
 Vue.use(filters);
 Vue.use(Antd);
-Vue.use(PiniaVuePlugin)
-const pinia = createPinia()
 
 new Vue({
   el: '#app',

@@ -1,10 +1,20 @@
 <template>
-  <h1>Here is a team component!</h1>
+  <div>
+    <a-row type="flex" :gutter=[0,32]>
+      <a-col>
+        <span style="font-size: 24px; font-weight: 700">You thought there was an Team View, but</span>
+      </a-col>
+      <a-col>
+        <img
+          src="https://i.kym-cdn.com/entries/icons/original/000/015/559/It_Was_Me__Dio!.jpg"
+        />
+      </a-col>
+    </a-row>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Team",
-  components: {},
 };
 </script>
